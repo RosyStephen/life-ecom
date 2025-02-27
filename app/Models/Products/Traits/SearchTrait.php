@@ -10,13 +10,14 @@ trait SearchTrait
     {
         $query = Product::query();
 
-        if (!empty($requestData['search'])) {
+        if (isset($requestData['search']) && $requestData['search'] != '') {
             $searchTerm = '%' . $requestData['search'] . '%';
             $query->where(function($q) use ($searchTerm) {
                 $q->where('name', 'like', $searchTerm)
-                ->orWhere('description', 'like', $searchTerm)
-                ->orWhere('price', 'like', $searchTerm)
-                ->orWhere('id', 'like', $searchTerm);
+                ->orWhere('id', 'like', $searchTerm)
+                ->orWhereHas('categories', function($q) use ($searchTerm) {
+                    $q->where('name', 'like', $searchTerm);
+                });
             });
         }
 

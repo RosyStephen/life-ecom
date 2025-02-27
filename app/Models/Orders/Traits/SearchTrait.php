@@ -19,14 +19,16 @@ trait SearchTrait
         }
 
        if (isset($requestData['search'])) {
-           $query->whereHas('user', function ($q) use ($requestData) {
-               $q->where('name', 'like', '%' . $requestData['search'] . '%');
-           });
-           $query->orWhereHas('orderItems', function ($q) use ($requestData) {
-               $q->whereHas('product', function ($q) use ($requestData) {
-                   $q->where('name', 'like', '%' . $requestData['search'] . '%');
-               });
-           });
+            $query->where('status', 'like', '%' . $requestData['search'] . '%');
+            $query->orWhere('id', 'like', '%' . $requestData['search'] . '%');
+            $query->orWhereHas('user', function ($q) use ($requestData) {
+                $q->where('name', 'like', '%' . $requestData['search'] . '%');
+            });
+            $query->orWhereHas('items', function ($q) use ($requestData) {
+                $q->whereHas('product', function ($q) use ($requestData) {
+                    $q->where('name', 'like', '%' . $requestData['search'] . '%');
+                });
+            });
        }
        if(isset($requestData['status'])) {
            $query->where('status', $requestData['status']);
@@ -37,9 +39,9 @@ trait SearchTrait
        if(isset($requestData['order_date'])) {
            $query->whereDate('created_at', $requestData['order_date']);
        }
-       if(isset($requestData['categories'])) {
-           $query->whereHas('orderItems.product.categories', function ($q) use ($requestData) {
-               $q->whereIn('id', $requestData['categories']);
+       if(isset($requestData['category_id']) && is_array($requestData['category_id'])) {
+           $query->whereHas('items.product.categories', function ($q) use ($requestData) {
+               $q->whereIn('categories.id', $requestData['category_id']);
            });
        }
        if(isset($requestData['price_from'])) {
