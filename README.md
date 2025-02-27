@@ -135,6 +135,18 @@ Additional Features (Bonus Implementations)
 Login & Register (without OTP verification)
 Admin can View products, categories, and orders along with users and roles and permission
 Customer can view Products, categories and their orders.
+
+## Sample Credentials
+
+Admin Login
+
+    Email: admin@gmail.com
+    Password: admin@123
+
+Customer Login
+
+    Email: user@gmail.com
+    Password: user@123
         
 👤 Rosy Jayamani
 ✉ rosy.stephen64@gmail.com
