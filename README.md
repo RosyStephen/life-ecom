@@ -42,25 +42,30 @@ Installation Guide
    
         cd life-ecom
 
+
 2. Install Dependencies
 
         composer install
 
-3. Key Generate
+3. Copy the environment file and configure:
+
+        cp .env.example .env
+
+5. Key Generate
 
         php artisan key:generate
 
-4. Set Up Database
+6. Set Up Database
 
         php artisan migrate --seed
 
 (This will create tables and add sample data)
 
-5. Storage & Permissions
+6. Storage & Permissions
 
         php artisan storage:link
 
-6. Start the Server
+7. Start the Server
 
         php artisan serve
 
