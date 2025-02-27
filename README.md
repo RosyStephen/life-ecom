@@ -42,21 +42,24 @@ cd ecommerce-api
 
 2. Install Dependencies
 
-composer install
+# composer install
 
-3. Set Up Database
+3. Key Generate
 
-php artisan migrate --seed
+# php artisan key:generate
+
+4. Set Up Database
+
+# php artisan migrate --seed
 
 (This will create tables and add sample data)
-4. Storage & Permissions
+5. Storage & Permissions
 
-php artisan storage:link
-chmod -R 777 storage bootstrap/cache
+# php artisan storage:link
 
-5. Start the Server
+6. Start the Server
 
-php artisan serve
+# php artisan serve
 
 (Runs on http://127.0.0.1:8000 by default)
 ## API Endpoints
@@ -107,7 +110,17 @@ Additional Features (Bonus Implementations)
 
 ✅ Image Upload with Validation & Storage
 ✅ Product Inventory Management (Stock Deduction on Order)
-✅ API Caching for Performance Optimization
 
+
+### Admin Panel
+
+    Accessible via http://127.0.0.1:8000/
+    
+## Features:
+ 
+Login & Register (without OTP verification)
+Admin can View products, categories, and orders along with users and roles and permission
+Customer can view Products, categories and their orders.
+        
 👤 Rosy Jayamani
 ✉ rosy.stephen64@gmail.com
