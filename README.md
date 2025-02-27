@@ -1,4 +1,4 @@
-E-Commerce API (Laravel 12)
+### E-Commerce API (Laravel 12)
 Overview
 
 This is a RESTful API for an e-commerce product management system built with Laravel. It includes authentication, product management, categories, and order management.
