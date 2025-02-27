@@ -38,8 +38,9 @@ Features
 Installation Guide
 1. Clone the Repository
 
-git clone https://github.com/your-repo/ecommerce-api.git
-cd ecommerce-api
+        git clone https://github.com/RosyStephen/life-ecom.git
+   
+        cd life-ecom
 
 2. Install Dependencies
 
