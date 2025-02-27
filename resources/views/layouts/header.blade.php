@@ -25,7 +25,7 @@
       <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="{{asset('assets/images/users/user-default-image.jpg')}}"
+                    <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/users/default-user.webp') }}"
                         alt="Header Avatar">
                         @if(auth()->check() && auth()->user()->roles->first())
                     <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ Auth::user()->name }} ({{ Auth::user()->roles->first()->name }})</span>

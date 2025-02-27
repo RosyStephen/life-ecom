@@ -28,7 +28,7 @@
                                 <div class="col-lg-4">
                                     <div class="d-flex">
                                         <div class="flex-shrink-0 me-3">
-                                            <img src="{{asset('assets/images/user-logo.jpg')}}" alt="" class="avatar-md rounded-circle img-thumbnail">
+                                            <img src="{{ asset('assets/images/users/default-user.webp') }}" alt="" class="avatar-md rounded-circle img-thumbnail">
                                         </div>
                                         <div class="flex-grow-1 align-self-center">
                                             <div class="text-muted">
@@ -105,7 +105,7 @@
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">
-                                    <img src="assets/images/profile-img.png" alt="" class="img-fluid">
+                                    <img src="{{ asset('assets/images/users/default-user.webp') }}" alt="" class="img-fluid">
                                 </div>
                             </div>
                         </div>

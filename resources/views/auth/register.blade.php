@@ -15,7 +15,7 @@
                                 </div>
                             </div>
                             <div class="col-5 align-self-end">
-                                <img src="assets/images/profile-img.png" alt="" class="img-fluid">
+                                <img src="{{ asset('assets/images/users/default-user.webp') }}" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                             <a href="index.html">
                                 <div class="avatar-md profile-user-wid mb-4">
                                     <span class="avatar-title rounded-circle bg-light">
-                                        <img src="assets/images/logo.svg" alt="" class="rounded-circle" height="34">
+                                        Life-Ecom
                                     </span>
                                 </div>
                             </a>

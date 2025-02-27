@@ -69,13 +69,13 @@
                         </div>
                     </div>
                     <div class="mb-3 row form-group">
-                        <label for="password" class="col-md-4 col-form-label">New Password</label>
+                        <label for="new_password" class="col-md-4 col-form-label">New Password</label>
                         <div class="col-md-8">
                             <input class="form-control" type="text" value="" name="password" id="new_password" placeholder="Enter New Password">
                         </div>
                     </div>
                     <div class="mb-3 row form-group">
-                        <label for="confirm_password" class="col-md-4 col-form-label">Confirm Password</label>
+                        <label for="password_confirmation" class="col-md-4 col-form-label">Confirm Password</label>
                         <div class="col-md-8">
                             <input class="form-control" type="text" value="" name="password_confirmation" id="password_confirmation" placeholder="Enter confirm Password">
                         </div>
