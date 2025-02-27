@@ -3,12 +3,21 @@
 namespace App\Models\Orders\Traits;
 
 use App\Models\Orders\Order;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 trait SearchTrait
 {
     public static function searchQuery($requestData)
     {
-       $query = Order::query();
+        $user = User::find(Auth::id());
+
+        $query = Order::query();
+
+        if ($user && $user->hasRole('customer')) {
+            $query->where('user_id', $user->id);
+        }
+
        if (isset($requestData['search'])) {
            $query->whereHas('user', function ($q) use ($requestData) {
                $q->where('name', 'like', '%' . $requestData['search'] . '%');

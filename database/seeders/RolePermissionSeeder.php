@@ -40,6 +40,7 @@ class RolePermissionSeeder extends Seeder
             'view-trashed-product',
             'restore-product',
             'force-delete-product',
+            'delete-product-image',
             'orders',
 
         ];

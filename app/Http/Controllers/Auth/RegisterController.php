@@ -70,16 +70,15 @@ class RegisterController extends Controller
             // Check if email already exists
             $existingUser = User::where('email', $request->email)->first();
 
-            if ($existingUser) {
-                if ($existingUser->email == $request->email) {
-                    return back()->withInput()->with('success', 'This email is already registered: <a href="' . route('login', ['email' => $existingUser->email]) . '" class="text-primary fw-bold">' . $existingUser->email . '</a>');
-                }
+            if ($existingUser && $existingUser->email == $request->email) {
+                return back()->withInput()->with('success', 'This email is already registered: <a href="' . route('login', ['email' => $existingUser->email]) . '" class="text-primary fw-bold">' . $existingUser->email . '</a>');
             }
 
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'email_verified_at' => now(),
             ]);
 
             // Assign role if it exists

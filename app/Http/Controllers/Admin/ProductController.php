@@ -11,7 +11,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Product::select(['id', 'name','slug','description','price','stock_quantity','status', 'created_at']);
+            $query = Product::select(['id', 'name','slug','description','price','stock_quantity','is_active', 'created_at']);
 
              // Search filter
              if (!empty($request->search['value'])) {
@@ -39,7 +39,7 @@ class ProductController extends Controller
                     'price' => $value->price,
                     'stock_quantity' => $value->stock_quantity,
                     'images' => $value->images,
-                    'status' => $value->status == 1 ? '<i class="fas fa-check-circle text-success"></i>' : '<i class="fas fa-times-circle text-danger"></i>',
+                    'status' => $value->is_active == 1 ? '<i class="fas fa-check-circle text-success"></i>' : '<i class="fas fa-times-circle text-danger"></i>',
 
                     'created_at' => $value->created_at->format('d M Y'), // Format date
 

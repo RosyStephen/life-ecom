@@ -51,6 +51,11 @@ class OrderController extends Controller
      */
     public function createOrder(Request $request)
     {
+        $request->validate([
+            'items' => 'required|array',
+            'items.*.product_id' => 'required|exists:products,id',
+            'items.*.quantity' => 'required|integer|min:1',
+        ]);
         $user = Auth::user();
 
         // Start Transaction to prevent partial order creation
@@ -59,14 +64,17 @@ class OrderController extends Controller
         try {
             $order = Order::create([
                 'user_id' => $user->id,
-                'total_amount' => 0, // Will be calculated later
-                'status' => 'pending',
+                'total_price' => 0, // Will be calculated later
+                'status' => Order::STATUS_PLACED,
+                'payment_method' => $request->payment_method,
+                'payment_status' => ($request->payment_method && $request->payment_method == 'cod') ? 'paid' : 'unpaid',
+                'shipping_address' => $request->shipping_address ?? $user->address,
             ]);
 
             $total = 0;
 
-            foreach ($request->products as $item) {
-                $product = Product::find($item['id']);
+            foreach ($request->items as $item) {
+                $product = Product::find($item['product_id']);
 
                 // Validate stock BEFORE adding to order
                 if (!$product || $product->stock_quantity < $item['quantity']) {
@@ -89,7 +97,7 @@ class OrderController extends Controller
             }
 
             // Update order total
-            $order->update(['total_amount' => $total]);
+            $order->update(['total_price' => $total]);
 
             // Commit transaction (order is now final)
             DB::commit();
@@ -101,7 +109,7 @@ class OrderController extends Controller
 
         } catch (\Exception $e) {
             DB::rollBack(); // Rollback in case of an error
-            return response()->json(['message' => 'Something went wrong!'], 500);
+            return response()->json(['message' => 'Something went wrong!'. $e->getMessage()], 500);
         }
     }
 

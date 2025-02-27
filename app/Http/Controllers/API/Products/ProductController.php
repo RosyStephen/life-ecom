@@ -147,6 +147,9 @@ class ProductController extends Controller
      */
     public function deleteImage($imageId)
     {
+        if(!request()->user()->can('delete-product-image')) {
+            return $this->sendUnautoriszedResponse();
+        }
         $image = ProductImage::find($imageId);
 
         if (!$image) {

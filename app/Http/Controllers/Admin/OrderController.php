@@ -4,14 +4,23 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Orders\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Order::with('order_items')->select(['id', 'user_id','total_price','created_at']);
+            $query = Order::with('items', 'user');
+
+
+            $user = User::find(Auth::id());
+
+            if($user->hasRole('customer')) {
+                $query->where('user_id', Auth::id());
+            }
 
              // Search filter
              if (!empty($request->search['value'])) {
@@ -33,14 +42,14 @@ class OrderController extends Controller
                 $data[] = [
                     'DT_RowIndex' => $key + 1, // Serial number
                     'id' => $value->id,
-                    'name' => $value->name,
-                    'slug' => $value->slug,
-                    'description' => $value->description,
-                    'price' => $value->price,
-                    'stock_quantity' => $value->stock_quantity,
-                    'images' => $value->images,
-                    'status' => $value->status == 1 ? '<i class="fas fa-check-circle text-success"></i>' : '<i class="fas fa-times-circle text-danger"></i>',
-
+                    'customer_name' => $value->user->name,
+                    'customer_email' => $value->user->email,
+                    'total_items' => $value->items->count(),
+                    'total_price' => $value->total_price,
+                    'payment_method' => $value->payment_method,
+                    'payment_status' => $value->payment_status,
+                    'status' => $value->status,
+                    'shipping_address' => $value->shipping_address,
                     'created_at' => $value->created_at->format('d M Y'), // Format date
 
                 ];

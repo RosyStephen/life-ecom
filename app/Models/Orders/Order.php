@@ -16,17 +16,29 @@ class Order extends Model
     use SearchTrait;
 
     const STATUS_PENDING = 'pending';
-    const STATUS_PROCESSING = 'processing';
-    const STATUS_COMPLETED = 'completed';
-    const STATUS_CANCELLED = 'cancelled';
-    const STATUS_REFUNDED = 'refunded';
+    const STATUS_PLACED = 'Placed';
+    const STATUS_PROCESSING = 'Pocessing';
+    const STATUS_COMPLETED = 'Completed';
+    const STATUS_CANCELLED = 'Cancelled';
+    const STATUS_REFUNDED = 'Refunded';
 
     const STATUS_PICKED_UP = 'picked_up';
     const STATUS_ON_THE_WAY = 'on_the_way';
     const STATUS_NEAR_DELIVERY = 'near_delivery';
-    const STATUS_DELIVERED = 'delivered';
+    const STATUS_DELIVERED = 'Delivered';
 
-    protected $fillable = ['code', 'user_id', 'total_price', 'status', 'created_user', 'updated_user', 'deleted_user'];
+    protected $fillable = [
+        'code',
+        'user_id',
+        'total_price',
+        'payment_method',
+        'payment_status',
+        'status',
+        'shipping_address',
+        'created_user',
+        'updated_user',
+        'deleted_user'
+    ];
 
     protected static function boot()
     {

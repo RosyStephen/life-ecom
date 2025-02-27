@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
 
         if ($request->ajax()) {
-            $query = Category::select(['id', 'name','slug','status', 'created_at']);
+            $query = Category::select(['id', 'name','slug','is_active', 'created_at']);
 
              // Search filter
              if (!empty($request->search['value'])) {
@@ -36,7 +36,7 @@ class CategoryController extends Controller
                     'id' => $value->id,
                     'name' => $value->name,
                     'slug' => $value->slug,
-                    'status' => $value->status == 1 ? '<i class="fas fa-check-circle text-success"></i>' : '<i class="fas fa-times-circle text-danger"></i>',
+                    'status' => $value->is_active == 1 ? '<i class="fas fa-check-circle text-success"></i>' : '<i class="fas fa-times-circle text-danger"></i>',
 
                     'created_at' => $value->created_at->format('d M Y'), // Format date
 

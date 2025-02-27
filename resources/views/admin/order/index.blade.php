@@ -30,18 +30,20 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-title-desc">Orders</p>
-                    <table id="Orders-table" class="table table-bordered dt-responsive  nowrap w-100">
+                    <table id="order-table" class="table table-bordered dt-responsive  nowrap w-100">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Order ID</th>
 
-                                <th>User Name</th>
-                                <th>User Email</th>
+                                <th>Customer Name</th>
+                                <th>Customer Email</th>
+                                <th>Total Items</th>
                                 <th>Total Price</th>
                                 <th>Payment Method</th>
                                 <th>Payment Status</th>
                                 <th>status</th>
+                                <th>Shipping Address</th>
                                 <th>Created At</th>
 
                             </tr>

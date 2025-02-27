@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="page-content">
     <div class="container-fluid">
             <!-- start page title -->
@@ -14,7 +13,7 @@
                 </div>
             </div>
             <!-- end page title -->
-            @if(auth()->check() && auth()->user()->hasRole('admin'))
+            <?php if(auth()->check() && auth()->user()->hasRole('admin')): ?>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -23,14 +22,14 @@
                                 <div class="col-lg-4">
                                     <div class="d-flex">
                                         <div class="flex-shrink-0 me-3">
-                                            <img src="{{asset('assets/images/users/user-default-image.jpg')}}" alt="" class="avatar-md rounded-circle img-thumbnail">
+                                            <img src="<?php echo e(asset('assets/images/users/user-default-image.jpg')); ?>" alt="" class="avatar-md rounded-circle img-thumbnail">
                                         </div>
                                         <div class="flex-grow-1 align-self-center">
                                             <div class="text-muted">
                                                 <p class="mb-2">Welcome to  Life-Ecom</p>
-                                                @if(auth()->check())
-                                                <h5 class="mb-1">{{auth()->user()->name}}</h5>
-                                                @endif
+                                                <?php if(auth()->check()): ?>
+                                                <h5 class="mb-1"><?php echo e(auth()->user()->name); ?></h5>
+                                                <?php endif; ?>
 
                                             </div>
                                         </div>
@@ -42,26 +41,26 @@
                                         <div class="row">
                                             <div class="col-4">
                                                 <div>
-                                                    @if($productsCount > 0)
+                                                    <?php if($productsCount > 0): ?>
                                                         <p class="text-muted text-truncate mb-2">Total Products</p>
-                                                        <h5 class="mb-0">{{$productsCount}}</h5>
-                                                    @endif
+                                                        <h5 class="mb-0"><?php echo e($productsCount); ?></h5>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div>
-                                                    @if($ordersCount > 0)
+                                                    <?php if($ordersCount > 0): ?>
                                                         <p class="text-muted text-truncate mb-2">Total Orders</p>
-                                                        <h5 class="mb-0">{{$ordersCount}}</h5>
-                                                    @endif
+                                                        <h5 class="mb-0"><?php echo e($ordersCount); ?></h5>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div>
-                                                    @if($usersCount > 0)
+                                                    <?php if($usersCount > 0): ?>
                                                         <p class="text-muted text-truncate mb-2">Customers</p>
-                                                        <h5 class="mb-0">{{$usersCount}}</h5>
-                                                    @endif
+                                                        <h5 class="mb-0"><?php echo e($usersCount); ?></h5>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -74,7 +73,7 @@
                     </div>
                 </div>
             </div>
-            @else
+            <?php else: ?>
             <div class="col-xl-4">
                 <div class="card bg-primary bg-soft">
                     <div>
@@ -97,11 +96,13 @@
                     </div>
                 </div>
             </div>
-            @endif
+            <?php endif; ?>
             <!-- end row -->
 
 
         </div>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH D:\servcer\htdocs\linkedin\life-ecom\resources\views/users/dashboard/index.blade.php ENDPATH**/ ?>
