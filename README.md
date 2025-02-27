@@ -59,41 +59,48 @@ chmod -R 777 storage bootstrap/cache
 php artisan serve
 
 (Runs on http://127.0.0.1:8000 by default)
-API Endpoints
-Authentication
-Method	Endpoint	Description
-    POST	/api/auth/login	Login and get token
-    POST	/api/auth/logout	Logout user
-    POST	/api/auth/register	Register new user
-    POST	/api/auth/verify-email	Verify email with OTP
-    POST	/api/auth/resend-otp	Resend verification OTP
-Products
-    Method	Endpoint	                                    Description
-    GET	    /api/products/products	                        Get all products (paginated)
-    GET	    /api/products/products/{product}	            Get single product details
-    POST	/api/products/products	                        Create a new product (Admin only)
-    POST	/api/products/products/{product}	            Update a product (Admin only)
-    DELETE	/api/products/products/{product}	            Soft delete a product (Admin only)
-    POST	/api/products/product/delete-image/{image}	    Delete an image from a product
-    GET	    /api/products/product/trashed	                Get trashed products
-    PUT	    /api/products/product/restore/{product}	        Restore a soft-deleted product
-    DELETE	/api/products/product/force-delete/{product}	Permanently delete a product
-Categories
-    Method	Endpoint	                                    Description
-    GET	    /api/master/categories	                        Get all categories
-    POST	/api/master/categories	                        Create a new category (Admin only)
-    GET	    /api/master/categories/{category}	            Get category details
-    PUT	    /api/master/categories/{category}	            Update a category (Admin only)
-    DELETE	/api/master/categories/{category}	            Delete a category (Admin only)
-    GET	    /api/master/category/trashed	                Get trashed categories
-    PUT	    /api/master/category/restore/{category}	        Restore a soft-deleted category
-    DELETE	/api/master/category/force-delete/{category}	Permanently delete a category
-Orders
-    Method	Endpoint	                                    Description
-    GET	    /api/orders/orders	                            View all orders (authenticated users only)
-    POST	/api/orders/order	                            Place a new order
-    GET	    /api/orders/order/{code}	                    Get order details
-Testing
+## API Endpoints
+
+### Authentication
+| Method | Endpoint                     | Description                  |
+|--------|------------------------------|------------------------------|
+| POST   | `/api/auth/login`            | Login and get token         |
+| POST   | `/api/auth/logout`           | Logout user                 |
+| POST   | `/api/auth/register`         | Register new user           |
+| POST   | `/api/auth/verify-email`     | Verify email with OTP       |
+| POST   | `/api/auth/resend-otp`       | Resend verification OTP     |
+
+### Products
+| Method | Endpoint                                          | Description                          |
+|--------|--------------------------------------------------|--------------------------------------|
+| GET    | `/api/products/products`                        | Get all products (paginated)        |
+| GET    | `/api/products/products/{product}`              | Get single product details          |
+| POST   | `/api/products/products`                        | Create a new product (Admin only)   |
+| POST   | `/api/products/products/{product}`              | Update a product (Admin only)       |
+| DELETE | `/api/products/products/{product}`              | Soft delete a product (Admin only)  |
+| POST   | `/api/products/product/delete-image/{image}`    | Delete an image from a product      |
+| GET    | `/api/products/product/trashed`                 | Get trashed products                |
+| PUT    | `/api/products/product/restore/{product}`       | Restore a soft-deleted product      |
+| DELETE | `/api/products/product/force-delete/{product}`  | Permanently delete a product        |
+
+### Categories
+| Method | Endpoint                                          | Description                          |
+|--------|--------------------------------------------------|--------------------------------------|
+| GET    | `/api/master/categories`                        | Get all categories                  |
+| POST   | `/api/master/categories`                        | Create a new category (Admin only)  |
+| GET    | `/api/master/categories/{category}`             | Get category details                |
+| PUT    | `/api/master/categories/{category}`             | Update a category (Admin only)      |
+| DELETE | `/api/master/categories/{category}`             | Delete a category (Admin only)      |
+| GET    | `/api/master/category/trashed`                  | Get trashed categories              |
+| PUT    | `/api/master/category/restore/{category}`       | Restore a soft-deleted category     |
+| DELETE | `/api/master/category/force-delete/{category}`  | Permanently delete a category       |
+
+### Orders
+| Method | Endpoint                          | Description                             |
+|--------|----------------------------------|-----------------------------------------|
+| GET    | `/api/orders/orders`            | View all orders (authenticated users)  |
+| POST   | `/api/orders/order`             | Place a new order                      |
+| GET    | `/api/orders/order/{code}`      | Get order details                      |
 
 
 Additional Features (Bonus Implementations)
