@@ -43,7 +43,7 @@ cd ecommerce-api
 
 2. Install Dependencies
 
-# composer install
+        composer install
 
 3. Key Generate
 
