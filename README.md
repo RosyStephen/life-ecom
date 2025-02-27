@@ -3,6 +3,7 @@ Overview
 
 This is a RESTful API for an e-commerce product management system built with Laravel. It includes authentication, product management, categories, and order management.
 Features
+
 ✅ Product Management
 
     CRUD operations for products
@@ -46,25 +47,29 @@ cd ecommerce-api
 
 3. Key Generate
 
-# php artisan key:generate
+        php artisan key:generate
 
 4. Set Up Database
 
-# php artisan migrate --seed
+        php artisan migrate --seed
 
 (This will create tables and add sample data)
+
 5. Storage & Permissions
 
-# php artisan storage:link
+        php artisan storage:link
 
 6. Start the Server
 
-# php artisan serve
+        php artisan serve
 
 (Runs on http://127.0.0.1:8000 by default)
+
 ## API Endpoints
 
+
 ### Authentication
+
 | Method | Endpoint                     | Description                  |
 |--------|------------------------------|------------------------------|
 | POST   | `/api/auth/login`            | Login and get token         |
@@ -74,6 +79,7 @@ cd ecommerce-api
 | POST   | `/api/auth/resend-otp`       | Resend verification OTP     |
 
 ### Products
+
 | Method | Endpoint                                          | Description                          |
 |--------|--------------------------------------------------|--------------------------------------|
 | GET    | `/api/products/products`                        | Get all products (paginated)        |
@@ -87,6 +93,7 @@ cd ecommerce-api
 | DELETE | `/api/products/product/force-delete/{product}`  | Permanently delete a product        |
 
 ### Categories
+
 | Method | Endpoint                                          | Description                          |
 |--------|--------------------------------------------------|--------------------------------------|
 | GET    | `/api/master/categories`                        | Get all categories                  |
@@ -99,6 +106,7 @@ cd ecommerce-api
 | DELETE | `/api/master/category/force-delete/{category}`  | Permanently delete a category       |
 
 ### Orders
+
 | Method | Endpoint                          | Description                             |
 |--------|----------------------------------|-----------------------------------------|
 | GET    | `/api/orders/orders`            | View all orders (authenticated users)  |
